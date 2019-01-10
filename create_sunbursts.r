@@ -72,15 +72,15 @@ Humans.offspring<- prepare.for.sunburst(df.humans.offspring)
 
 #create vector of colours (VALUES) matched to sections on the chart (DOMAINS)
 DOMAINS <- unique(c(Both.mother[[1]],Both.offspring[[1]]))
-VALUES <- rep("a09992",length(DOMAINS))
-VALUES[grep("No maternal or paternal exposures|Mother|Father|Mother Pregnancy|Father Pregnancy|Prepregnancy|Offspring|enduring|Postnatal|grandparents",DOMAINS)] <- "5F5953"
-VALUES[grep("Any maternal exposure",DOMAINS)] <- "F6AC42"
-VALUES[grep("Mother only",DOMAINS)] <- "f78e49"
-VALUES[grep("Mother Pregnancy",DOMAINS)] <- "F96A51"
-VALUES[grep("Any paternal exposure",DOMAINS)] <- "43a38c"
-VALUES[grep("Father only",DOMAINS)] <- "70C5B1"
-VALUES[grep("Both maternal and paternal exposures",DOMAINS)] <- "94a76b"
-VALUES[grep("Father & Mother",DOMAINS)] <- "94a76b"
+VALUES <- rep("#a09992",length(DOMAINS))
+VALUES[grep("No maternal or paternal exposures|Mother|Father|Mother Pregnancy|Father Pregnancy|Prepregnancy|Offspring|enduring|Postnatal|grandparents",DOMAINS)] <- "#5F5953"
+VALUES[grep("Any maternal exposure",DOMAINS)] <- "#F6AC42"
+VALUES[grep("Mother only",DOMAINS)] <- "#f78e49"
+VALUES[grep("Mother Pregnancy",DOMAINS)] <- "#F96A51"
+VALUES[grep("Any paternal exposure",DOMAINS)] <- "#43a38c"
+VALUES[grep("Father only",DOMAINS)] <- "#70C5B1"
+VALUES[grep("Both maternal and paternal exposures",DOMAINS)] <- "#94a76b"
+VALUES[grep("Father & Mother",DOMAINS)] <- "#94a76b"
 
 #create vector of all branches in the right order (i.e. maternal > both > paternal > neither)
 X.all<-rbind(Both.mother[[2]][order(Both.mother[[2]]$Freq,decreasing=TRUE),],Both.offspring[[2]][order(Both.offspring[[2]]$Freq,decreasing=TRUE),])

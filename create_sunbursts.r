@@ -74,10 +74,10 @@ Humans.offspring<- prepare.for.sunburst(df.humans.offspring)
 DOMAINS <- unique(c(Both.mother[[1]],Both.offspring[[1]]))
 VALUES <- rep("#a09992",length(DOMAINS))
 VALUES[grep("No maternal or paternal exposures|Mother|Father|Mother Pregnancy|Father Pregnancy|Prepregnancy|Offspring|enduring|Postnatal|grandparents",DOMAINS)] <- "#5F5953"
-VALUES[grep("Maternal exposure (no paternal)",DOMAINS)] <- "#F6AC42"
+VALUES[grep("no paternal",DOMAINS)] <- "#F6AC42"
 VALUES[grep("Mother only",DOMAINS)] <- "#f78e49"
 VALUES[grep("Mother Pregnancy",DOMAINS)] <- "#F96A51"
-VALUES[grep("Paternal exposure (no maternal)",DOMAINS)] <- "#43a38c"
+VALUES[grep("no maternal",DOMAINS)] <- "#43a38c"
 VALUES[grep("Father only",DOMAINS)] <- "#70C5B1"
 VALUES[grep("Both maternal and paternal exposures",DOMAINS)] <- "#94a76b"
 VALUES[grep("Father & Mother",DOMAINS)] <- "#94a76b"
@@ -87,9 +87,9 @@ X.all<-rbind(Both.mother[[2]][order(Both.mother[[2]]$Freq,decreasing=TRUE),],Bot
 All.combinations <- data.frame(combination=as.character(unique(X.all$Var1)))
 All.combinations$order1 <- 1:nrow(All.combinations)
 All.combinations$order2 <- rep(5,nrow(All.combinations))
-All.combinations$order2[grepl(All.combinations$combination,pattern="Any maternal exposure")]<-1
+All.combinations$order2[grepl(All.combinations$combination,pattern="no paternal")]<-1
 All.combinations$order2[grepl(All.combinations$combination,pattern="Both maternal and paternal exposures")]<-2
-All.combinations$order2[grepl(All.combinations$combination,pattern="Any paternal exposure")]<-3
+All.combinations$order2[grepl(All.combinations$combination,pattern="no maternal")]<-3
 All.combinations$order2[grepl(All.combinations$combination,pattern="No maternal or paternal exposures")]<-4
 All.combinations$order3 <- 2
 All.combinations$order3[grep(All.combinations$combination,pattern="Mother Pregnancy")]<-1

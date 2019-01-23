@@ -29,8 +29,8 @@ ring1[ring1=="Father"] <-"Father only"
 ring1[ring1=="Offspring"] <-"Offspring only"
 ring1[ring1=="(Great) grandparents"] <-"(Great) grandparents only"
 ring0 <- rep("No maternal or paternal exposures",length(ring1))
-ring0[grep(ring1,pattern="Mother")] <-"Any maternal exposure"
-ring0[grep(ring1,pattern="Father only")] <-"Any paternal exposure"
+ring0[grep(ring1,pattern="Mother")] <-"Maternal exposure (no paternal)"
+ring0[grep(ring1,pattern="Father only")] <-"Paternal exposure (no maternal)"
 ring0[paste(grepl(ring1,pattern="Father"),grepl(ring1,pattern="Mother"))=="TRUE TRUE"] <-"Both maternal and paternal exposures"
 ring2 <- as.data.frame.matrix(table(df.x$Study.ID,paste(df.x$Exposure.target,df.x$Timing.of.exposure)))
 ring2 <- apply(ring2,1,function(x) paste(colnames(ring2)[which(x!=0)],collapse=" & "))

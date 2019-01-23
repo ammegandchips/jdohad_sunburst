@@ -2,9 +2,11 @@
 require(sunburstR)
 require(RColorBrewer)
 
+# set wd
+setwd("//rdsfcifs.acrc.bris.ac.uk/MRC-IEU-research/projects/ieu2/p6/035/working/data/results/JDOHaD_shiny_app/sunburst/")
+
 #load data
-dat <- read.csv("\\\\ads.bris.ac.uk\\filestore\\MyFiles\\Staff17\\gs8094\\Documents\\work\\ieu\\present\\pat_effects_commentary\\JDOHAD\\dat.csv", stringsAsFactors=FALSE, na.strings="") #PC
-dat <- read.csv("/Volumes/filestore/Documents/work/ieu/present/pat_effects_commentary/JDOHAD/dat.csv",stringsAsFactors=FALSE, na.strings="") #Mac
+dat <- read.csv("dat.csv", stringsAsFactors=FALSE, na.strings="")
 
 #check all 532 studies are included
 c(1:532)[which((1:532 %in% dat$Study.ID)=="FALSE")]
@@ -105,18 +107,10 @@ Humans.motherS <- sunburst(na.omit(Humans.mother[[2]][match(All.combinations,Hum
 Animals.offspringS <- sunburst(na.omit(Animals.offspring[[2]][match(All.combinations,Animals.offspring[[2]]$Var1),]),colors=list(range=VALUES,domain=DOMAINS),legend=FALSE,explanation = "function(d) { return ( Math.round((d.value / this * 100) * 100) / 100 ) + '%<br>' + d.value + ' of ' + this }")
 Animals.motherS <- sunburst(na.omit(Animals.mother[[2]][match(All.combinations,Animals.mother[[2]]$Var1),]),colors=list(range=VALUES,domain=DOMAINS),legend=FALSE,explanation = "function(d) { return ( Math.round((d.value / this * 100) * 100) / 100 ) + '%<br>' + d.value + ' of ' + this }")
 
-#save sunbursts (PC)
-saveRDS(Both.motherS,"\\\\ads.bris.ac.uk\\filestore\\MyFiles\\Staff17\\gs8094\\Documents\\work\\ieu\\present\\pat_effects_commentary\\JDOHAD\\sunburst\\Both.mother.rds")
-saveRDS(Animals.motherS,"\\\\ads.bris.ac.uk\\filestore\\MyFiles\\Staff17\\gs8094\\Documents\\work\\ieu\\present\\pat_effects_commentary\\JDOHAD\\sunburst\\Animals.mother.rds")
-saveRDS(Humans.motherS,"\\\\ads.bris.ac.uk\\filestore\\MyFiles\\Staff17\\gs8094\\Documents\\work\\ieu\\present\\pat_effects_commentary\\JDOHAD\\sunburst\\Humans.mother.rds")
-saveRDS(Both.offspringS,"\\\\ads.bris.ac.uk\\filestore\\MyFiles\\Staff17\\gs8094\\Documents\\work\\ieu\\present\\pat_effects_commentary\\JDOHAD\\sunburst\\Both.offspring.rds")
-saveRDS(Animals.offspringS,"\\\\ads.bris.ac.uk\\filestore\\MyFiles\\Staff17\\gs8094\\Documents\\work\\ieu\\present\\pat_effects_commentary\\JDOHAD\\sunburst\\Animals.offspring.rds")
-saveRDS(Humans.offspringS,"\\\\ads.bris.ac.uk\\filestore\\MyFiles\\Staff17\\gs8094\\Documents\\work\\ieu\\present\\pat_effects_commentary\\JDOHAD\\sunburst\\Humans.offspring.rds")
-
-#save sunbursts (Mac)
-saveRDS(Both.motherS,"/Volumes/filestore/Documents/work/ieu/present/pat_effects_commentary/JDOHAD/sunburst/Both.mother.rds")
-saveRDS(Animals.motherS,"/Volumes/filestore/Documents/work/ieu/present/pat_effects_commentary/JDOHAD/sunburst/Animals.mother.rds")
-saveRDS(Humans.motherS,"/Volumes/filestore/Documents/work/ieu/present/pat_effects_commentary/JDOHAD/sunburst/Humans.mother.rds")
-saveRDS(Both.offspringS,"/Volumes/filestore/Documents/work/ieu/present/pat_effects_commentary/JDOHAD/sunburst/Both.offspring.rds")
-saveRDS(Animals.offspringS,"/Volumes/filestore/Documents/work/ieu/present/pat_effects_commentary/JDOHAD/sunburst/Animals.offspring.rds")
-saveRDS(Humans.offspringS,"/Volumes/filestore/Documents/work/ieu/present/pat_effects_commentary/JDOHAD/sunburst/Humans.offspring.rds")
+#save sunbursts
+saveRDS(Both.motherS,"Both.mother.rds")
+saveRDS(Animals.motherS,"Animals.mother.rds")
+saveRDS(Humans.motherS,"Humans.mother.rds")
+saveRDS(Both.offspringS,"Both.offspring.rds")
+saveRDS(Animals.offspringS,"Animals.offspring.rds")
+saveRDS(Humans.offspringS,"Humans.offspring.rds")
